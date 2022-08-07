@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AttendeeApp.Data;
+using AttendeeApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddDbContext<AttendeeDbContext>(options => options.UseSqlite(connectionString));
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IAttendeeRepository, AttendeeRepository>();
 
 var app = builder.Build();
 
