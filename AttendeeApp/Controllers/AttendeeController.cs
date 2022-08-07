@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AttendeeApp.Models;
 using AttendeeApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,25 @@ namespace AttendeeApp.Controllers
         {
             var attendees = attendeeRepository.GetAttendees();
             return View(attendees);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Attendee model)
+        {
+   
+            if(ModelState.IsValid)
+            {
+                this.attendeeRepository.Add(model);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "참석 등록하기";
+}
+
+@model Attendee
+<h2>등록하기</h2>
+
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post" class="form-horizontal">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <label asp-for="UID" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="UID" class="form-control" placeholder="UID" />
+                    <span asp-validation-for="UID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserID" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="UserID" class="form-control" placeholder="UserID" />
+                    <span asp-validation-for="UserID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Name" class="form-control" placeholder="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary btn-lg">등록</button>
+                    <a asp-action="Index" class="btn btn-default btn-lg">취소</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+<a asp-action="Index">Back to List</a>
+

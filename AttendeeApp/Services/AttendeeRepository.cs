@@ -14,6 +14,8 @@ namespace AttendeeApp.Services
 
         public void Add(Attendee attendee)
         {
+            attendee.CreationDate = DateTime.Now;
+
             attendeeDbContext.Attendees?.Add(attendee);
             attendeeDbContext.SaveChanges();
         }

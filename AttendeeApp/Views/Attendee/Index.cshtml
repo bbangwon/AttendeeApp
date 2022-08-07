@@ -10,9 +10,12 @@
 
 <h1>Attendee</h1>
 
+<a asp-action="Create" class="btn btn-info">참가 등록하기</a>
+
 <ul>
     @foreach (var attendee in Model)
     {
-        <li>@attendee.Id - @attendee.UserID - @attendee.Name - @attendee.CreationDate.ToShortDateString()</li>
+        <li>@attendee.UID - @attendee.UserID - @attendee.Name - @attendee.CreationDate.ToShortDateString()</li>
+        
     }
 </ul>
